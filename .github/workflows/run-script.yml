@@ -1,0 +1,18 @@
+name: run-script
+
+on:
+  push:
+
+jobs:
+  run-shell-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Make script executable
+        run: chmod +x hello.sh
+
+      - name: Run script
+        run: ./hello.sh
