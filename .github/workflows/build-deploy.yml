@@ -9,13 +9,14 @@ jobs:
 
     steps:
       - name: Create file
-        run: echo "Hello from build job" > app.text
+        run: echo "Hello from build job" > app.txt
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-file
           path: app.txt
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -24,7 +25,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: app.file
+          name: app-file
 
       - name: Read file
-        run: cat app.text
+        run: cat app.txt
